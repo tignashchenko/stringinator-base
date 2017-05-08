@@ -32,7 +32,7 @@ const isArrayLike = function(obj) {
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
 const each = function(obj, callback=identity) {
   if(isArrayLike(obj)) {
-    for(let index = 0; i < obj.length; index++) {
+    for(let index = 0; index < obj.length; index++) {
       callback(obj[index], index, obj);
     }
   } else {

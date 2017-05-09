@@ -9,23 +9,20 @@ const last = function(str, n) {
 };
 
 const removeChar = function(str, target) {
-  const strArr = str.split('');
-  return _.reject(strArr, element => element === target).join('');
+  return _.reject(str, element => element === target).join('');
 };
 
 const hasChar = function(str, target) {
-  // hint: use _.some
-  // Your code goes here
+  return _.some(str, target);
 };
 
 const isOnlyDigits = function(str) {
-  // Your code goes here
+  return _.every(str, element => !isNaN(Number(element)));
 };
 
 const filterToOnlyDigits = function(str) {
   let result = '';
-  const strArr = str.split('');
-  _.filter(strArr, function(element) {
+  _.filter(str, function(element) {
     if(Number(element)) {
       result += element;
     }
@@ -39,13 +36,19 @@ const truncateString = function(val, maxLength) {
 };
 
 const truncateLongItems = function(obj, maxLength) {
-  // hint: use truncateString above
-  // Your code goes here
+  if(_.isArrayLike(obj)) {
+    return _.map(obj, element => truncateString(element, maxLength));
+  } else {
+    const strArr = [];
+      for(let key in obj) {
+        strArr.push(obj[key]);
+      }
+    return _.map(strArr, element => truncateString(element, maxLength));
+  }
 };
 
 const countChars = function(str) {
-  const strArr = str.split('');
-  return _.reduce(strArr, function(allChars, char) {
+  return _.reduce(str, function(allChars, char) {
     if(char in allChars) {
       allChars[char]++;
     } else {
@@ -56,8 +59,7 @@ const countChars = function(str) {
 };
 
 const dedup = function(str) {
-  const strArr = str.split('');
-  return _.uniq(strArr).join('');
+  return _.uniq(str).join('');
 };
 
 module.exports = {

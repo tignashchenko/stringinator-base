@@ -9,8 +9,8 @@ const last = function(str, n) {
 };
 
 const removeChar = function(str, target) {
-  // hint: use _.reject
-  // Your code goes here
+  const strArr = str.split('');
+  return _.reject(strArr, element => element === target).join('');
 };
 
 const hasChar = function(str, target) {

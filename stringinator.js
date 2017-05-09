@@ -23,7 +23,14 @@ const isOnlyDigits = function(str) {
 };
 
 const filterToOnlyDigits = function(str) {
-  // Your code goes here
+  let result = '';
+  const strArr = str.split('');
+  _.filter(strArr, function(element) {
+    if(Number(element)) {
+      result += element;
+    }
+  });
+  return result;
 };
 
 const truncateString = function(val, maxLength) {
